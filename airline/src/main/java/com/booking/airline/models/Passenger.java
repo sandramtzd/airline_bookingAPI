@@ -45,7 +45,7 @@ public class Passenger {
 
     }
 
-    public void addFlight(Optional<Flight> flight){
+    public void addFlight(Flight flight){
         this.flights.add(flight);
     }
 

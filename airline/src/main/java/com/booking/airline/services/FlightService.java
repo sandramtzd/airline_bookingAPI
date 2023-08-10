@@ -50,13 +50,20 @@ public class FlightService {
 
     // UPDATE PASSENGERS IN A FLIGHT
 
-    public void bookingPassenger(Long id){
-        Flight foundFlight = flightRepository.findById(id);
-        for (Passenger passenger : foundFlight.getPassengers()){
-            passenger.addFlight(foundFlight);
-        }
+//    public void bookingPassenger(Long id){
+//        Flight foundFlight = flightRepository.findById(id);
+//        for (Passenger passenger : foundFlight.getPassengers()){
+//            passenger.addFlight(foundFlight);
+//        }
+//
+//    }
 
+    // FILTER FLIGHTS BY DESTINATION
+
+    public List<Flight> findAllFlightsToDestination(String destination){
+        return flightRepository.findByDestination(destination);
     }
+
 
 
 

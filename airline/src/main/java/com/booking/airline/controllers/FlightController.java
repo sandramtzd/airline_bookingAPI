@@ -4,6 +4,7 @@ import com.booking.airline.models.BookingDTO;
 import com.booking.airline.models.Flight;
 import com.booking.airline.models.FlightDTO;
 import com.booking.airline.services.FlightService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,10 +58,18 @@ public class FlightController {
 
 
     // BOOKING A PASSENGER ONTO A FLIGHT
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<Flight> bookingPassenger (@RequestBody BookingDTO bookingDTO, @PathVariable Long id){
-        flightService.updateFlight(flight, id);
-        return new ResponseEntity<>(flight, HttpStatus.OK);
+//    @PutMapping(value = "/{id}")
+//    public ResponseEntity<Flight> bookingPassenger (@RequestBody BookingDTO bookingDTO, @PathVariable Long id){
+//        flightService.updateFlight(flight, id);
+//        return new ResponseEntity<>(flight, HttpStatus.OK);
+//    }
+
+    // SHOW. Flights by destination
+    @GetMapping
+    public ResponseEntity<List<Flight>> getFlightsByDestination(@RequestParam Optional<String> destination){
+        List<Flight> flights;
+        flights = flightService.findAllFlightsToDestination(destination.get());
+        return new ResponseEntity<>(flights, HttpStatus.OK);
     }
 
 
