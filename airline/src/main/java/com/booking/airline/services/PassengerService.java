@@ -20,9 +20,7 @@ public class PassengerService {
     @Autowired
     PassengerRepository passengerRepository;
 
-
-    // Add a new passenger
-
+    // ADD A NEW PASSENGER
     public Passenger updatePassenger(PassengerDTO passengerDTO, Long id){
         Passenger passengerToUpdate = passengerRepository.findById(id).get();
         passengerToUpdate.setName(passengerDTO.getName());
@@ -38,21 +36,20 @@ public class PassengerService {
         return passengerToUpdate;
     }
 
-
-    // Display all passengers
+    // DISPLAY ALL PASSENGERS
     public List<Passenger> findAllPassengers() {
         return passengerRepository.findAll();
     }
 
-    // Display details of a specific passenger
+    // DISPLAY A SPECIFIC PASSENGER
     public Passenger findPassenger(Long id){
         return passengerRepository.findById(id).get();
     }
 
-    // Save passenger
-
+    // SAVE PASSENGER
     public void savePassenger(PassengerDTO passengerDTO){
         Passenger passenger = new Passenger(passengerDTO.getName(), passengerDTO.getPhoneNumber(), passengerDTO.getEmailAddress());
+
         for (Long flightId : passengerDTO.getFlightIds()){
             Flight flight = flightRepository.findById(flightId).get();
             passenger.addFlight(flight);
@@ -61,16 +58,10 @@ public class PassengerService {
 
     }
 
-    // Delete passenger
+    // DELETE PASSENGER
     public void deletePassenger(Long id){
         passengerRepository.deleteById(id);
     }
-
-
-
-
-
-
 
 
 

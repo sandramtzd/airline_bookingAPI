@@ -19,7 +19,6 @@ public class PassengerController {
     PassengerService passengerService;
 
     // INDEX. Display details of all passengers
-
     @GetMapping
     public ResponseEntity<List<Passenger>> getAllPassengers(){
         return new ResponseEntity(passengerService.findAllPassengers(), HttpStatus.OK);

@@ -1,6 +1,8 @@
 package com.booking.airline.controllers;
 
+import com.booking.airline.models.BookingDTO;
 import com.booking.airline.models.Flight;
+import com.booking.airline.models.FlightDTO;
 import com.booking.airline.services.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,10 +20,9 @@ public class FlightController {
     FlightService flightService;
 
 
-    // CREATE
-
+    // CREATE. Add a new flight
     @PostMapping
-    public ResponseEntity<Flight> postFlight(@RequestBody Flight flight){
+    public ResponseEntity<List<Flight>> postFlight(@RequestBody Flight flight){
         flightService.saveFlight(flight);
         return new ResponseEntity(flightService.findAllFlights(), HttpStatus.CREATED);
     }
@@ -39,7 +40,6 @@ public class FlightController {
     }
 
     // UPDATE
-
     @PutMapping(value = "/{id}")
     public ResponseEntity<Flight> updateFlight (@RequestBody Flight flight, @PathVariable Long id){
         flightService.updateFlight(flight, id);
@@ -47,11 +47,20 @@ public class FlightController {
     }
 
 
+
     // DELETE
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Long> deleteFlight(@PathVariable Long id){
+    public ResponseEntity<Long> cancelFlight(@PathVariable Long id){
         flightService.cancelFlight(id);
         return new ResponseEntity<>(id, HttpStatus.OK);
+    }
+
+
+    // BOOKING A PASSENGER ONTO A FLIGHT
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Flight> bookingPassenger (@RequestBody BookingDTO bookingDTO, @PathVariable Long id){
+        flightService.updateFlight(flight, id);
+        return new ResponseEntity<>(flight, HttpStatus.OK);
     }
 
 

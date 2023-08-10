@@ -87,6 +87,34 @@ public class DataLoader implements ApplicationRunner {
         carolinaHorman.addFlight(unitedAirlines1);
         passengerRepository.save(francescaMarshall);
 
+        // Ryanair
+
+        Flight ryanair1 = new Flight ("Munich", 10, "15/11/2023", "10:00");
+        flightRepository.save(ryanair1);
+
+        Flight ryanair2 = new Flight ("Athens", 15, "10/08/2023", "11:00");
+        flightRepository.save(ryanair2);
+
+        Flight ryanair3 = new Flight("Barcelona", 80, "12/08/2023", "23:00");
+        flightRepository.save(ryanair3);
+
+        Flight ryanair4 = new Flight("Prague", 100, "21/10/2023", "12:00");
+        flightRepository.save(ryanair4);
+
+        // PatitoAir
+
+        Flight patitoAir1 = new Flight ("Munich", 10, "15/08/2024", "00:00");
+        flightRepository.save(patitoAir1);
+
+        Flight patitoAir2 = new Flight ("Athens", 15, "10/02/2024", "07:00");
+        flightRepository.save(patitoAir2);
+
+        Flight patitoAir3 = new Flight("Barcelona", 80, "12/01/2024", "19:40");
+        flightRepository.save(patitoAir3);
+
+        Flight patitoAir4 = new Flight("Prague", 100, "21/03/2024", "09:50");
+        flightRepository.save(patitoAir4);
+
 
 
 
